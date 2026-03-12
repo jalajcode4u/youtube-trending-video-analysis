@@ -1,4 +1,9 @@
 # 📊 YouTube Trending Video Performance Analysis
+![Python](https://img.shields.io/badge/Python-3.12-blue)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-green)
+![Matplotlib](https://img.shields.io/badge/Visualization-Matplotlib-orange)
+![Seaborn](https://img.shields.io/badge/Visualization-Seaborn-purple)
+![Status](https://img.shields.io/badge/Project-Completed-brightgreen)
 
 > **EDA Project** · Python · Pandas · Matplotlib · Seaborn · Power BI  
 > **Author:** Jalaj Kumar
@@ -10,6 +15,13 @@
 This project analyzes YouTube trending video data (US market, Jan 2023 – Jun 2024) to uncover patterns in views, engagement, upload timing, and channel dominance — providing actionable insights for content creators.
 
 ---
+Skills Demonstrated
+
+• Exploratory Data Analysis
+• Data Visualization
+• Feature Engineering
+• Business Insight Extraction
+• Python Data Stack
 
 ## 🎯 Key Questions Answered
 
@@ -75,7 +87,7 @@ youtube_analysis/
 
 ## 🛠 Tools & Libraries
 
-- **Python 3.11** — core language
+- **Python 3.12** — core language
 - **Pandas** — data loading, cleaning, aggregation
 - **Matplotlib / Seaborn** — all visualizations
 - **Power BI** — interactive dashboard (see `/powerbi/`)
@@ -91,7 +103,7 @@ git clone https://github.com/jalajcode4u/youtube-trending-video-analysis.git
 cd youtube-trending-video-analysis
 
 # 2. Install dependencies
-pip install pandas matplotlib seaborn jupyter
+pip install -r requirements.txt
 
 # 2.1 (Optional) Regenerate dataset
 python data/generate_data.py
