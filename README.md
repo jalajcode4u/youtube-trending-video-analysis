@@ -41,11 +41,11 @@ Skills Demonstrated
 youtube_analysis/
 │
 ├── data/
-│   ├── generate_data.py          # Script to regenerate the dataset
-│   └── youtube_trending_US.csv   # Dataset (2,000 trending video records)
+│   ├── generate_data.py          
+│   └── youtube_trending_US.csv   
 │
 ├── notebooks/
-│   └── YouTube_Analysis.ipynb    # Full EDA notebook (step-by-step analysis)
+│   └── YouTube_Analysis.ipynb    
 │
 ├── visualizations/
 │   ├── Q0_executive_dashboard.png
@@ -55,7 +55,7 @@ youtube_analysis/
 │   ├── Q4_top_channels.png
 │   └── Q5_day_of_week_analysis.png
 │
-├── analysis.py                   # Standalone analysis script (runs all 5 questions)
+├── analysis.py                   
 └── README.md
 ```
 
@@ -90,7 +90,7 @@ youtube_analysis/
 - **Python 3.12** — core language
 - **Pandas** — data loading, cleaning, aggregation
 - **Matplotlib / Seaborn** — all visualizations
-- **Power BI** — interactive dashboard (see `/powerbi/`)
+  **Power BI** — interactive dashboard *(coming soon)
 - **Git / GitHub** — version control
 
 ---
