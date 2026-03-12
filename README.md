@@ -150,4 +150,4 @@ jupyter notebook notebooks/YouTube_Analysis.ipynb
 
 ## 📬 Contact
 
-**Jalaj Kumar** · jalajkumar10112110@gmail.com · [GitHub](https://github.com/jalajcode4u)
+**Jalaj Kumar** · jalajkumar10112110@gmail.com · [GitHub](https://github.com/jalajcode4u) [LinkedIn](https://linkedin.com/in/jalaj-kumar2707)
