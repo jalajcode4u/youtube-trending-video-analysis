@@ -12,7 +12,7 @@
 
 ## 📌 Project Overview
 
-This project analyzes YouTube trending video data (US market, Jan 2023 – Jun 2024) to uncover patterns in views, engagement, upload timing, and channel dominance — providing actionable insights for content creators.
+This project analyzes YouTube trending video data (US market, Jan 2023 – Jun 2024) to uncover patterns in views, engagement, upload timing, and channel dominance — providing actionable insights for content creators. The dataset is programmatically generated to simulate real YouTube trending patterns using realistic distributions.
 
 ---
 Skills Demonstrated
