@@ -1,7 +1,7 @@
 # 📊 YouTube Trending Video Performance Analysis
 
 > **EDA Project** · Python · Pandas · Matplotlib · Seaborn · Power BI  
-> **Author:** Jalaj Kumar | BCA Graduate | Aspiring Data Analyst
+> **Author:** Jalaj Kumar
 
 ---
 
