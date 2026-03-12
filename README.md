@@ -87,19 +87,19 @@ youtube_analysis/
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/jalajcode4u/youtube-trending-analysis.git
-cd youtube-trending-analysis
+git clone https://github.com/jalajcode4u/youtube-trending-video-analysis.git
+cd youtube-trending-video-analysis
 
 # 2. Install dependencies
 pip install pandas matplotlib seaborn jupyter
 
-# 3. (Optional) Regenerate dataset
+# 2.1 (Optional) Regenerate dataset
 python data/generate_data.py
 
-# 4. Run full analysis script
+# 3. Run full analysis script
 python analysis.py
 
-# 5. Open Jupyter notebook for step-by-step walkthrough
+# 4. Open Jupyter notebook for step-by-step walkthrough
 jupyter notebook notebooks/YouTube_Analysis.ipynb
 ```
 
