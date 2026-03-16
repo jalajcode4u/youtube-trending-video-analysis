@@ -126,7 +126,7 @@ df["engagement_score"] = ((df["likes"] + df["comment_count"]) / df["views"]).rou
 
 out = os.path.join(os.path.dirname(__file__), "youtube_trending_US.csv")
 df.to_csv(out, index=False)
-print(f"✅  Dataset saved → {out}")
+print(f" Dataset saved → {out}")
 print(f"    Shape : {df.shape}")
 print(f"    Cols  : {list(df.columns)}")
 print(df.head(3).to_string())
