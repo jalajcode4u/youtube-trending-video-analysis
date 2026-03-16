@@ -1,10 +1,5 @@
-"""
-analysis.py  ·  YouTube Trending Video Performance Analysis
-============================================================
+""" YouTube Trending Video Performance Analysis
 Answers 5 key business questions using EDA.
-Saves all charts to ../visualizations/
-
-Run:  python3 analysis.py
 """
 
 import pandas as pd
@@ -18,13 +13,13 @@ import warnings, os
 
 warnings.filterwarnings("ignore")
 
-# ── Paths ─────────────────────────────────────────────────────────
+# ── Paths  ── 
 BASE  = os.path.dirname(os.path.abspath(__file__))
 DATA  = os.path.join(BASE, "data", "youtube_trending_US.csv")
 VIZ   = os.path.join(BASE, "visualizations")
 os.makedirs(VIZ, exist_ok=True)
 
-# ── Global style ──────────────────────────────────────────────────
+# ── Global style ──
 PALETTE  = ["#1B3A6B","#1A7A8A","#E85D04","#F4A261","#2D6A4F",
             "#52B788","#9B5DE5","#F72585","#4895EF","#FFB703"]
 NAVY, TEAL, ORANGE = "#1B3A6B", "#1A7A8A", "#E85D04"
@@ -49,12 +44,12 @@ def save(fig, name):
     path = os.path.join(VIZ, name)
     fig.savefig(path, dpi=150, bbox_inches="tight", facecolor="white")
     plt.close(fig)
-    print(f"  ✅  Saved → {name}")
+    print(f"   Saved → {name}")
 
 def fmt_M(x, _): return f"{x/1e6:.1f}M"
 
 # ── Load & clean ──────────────────────────────────────────────────
-print("\n📦  Loading data …")
+print("\n  Loading data …")
 df = pd.read_csv(DATA, parse_dates=["publish_date", "trending_date"])
 print(f"    Rows: {len(df):,}  |  Cols: {df.shape[1]}")
 print(f"    Date range: {df['publish_date'].min().date()} → {df['publish_date'].max().date()}")
@@ -65,13 +60,13 @@ df["publish_month"] = df["publish_date"].dt.to_period("M").astype(str)
 df["publish_year"]  = df["publish_date"].dt.year
 df["views_M"]       = df["views"] / 1e6
 
-print(f"\n📊  Basic stats:")
+print(f"\n  Basic stats:")
 print(df[["views","likes","comment_count","engagement_score"]].describe().round(2).to_string())
 
 # ─────────────────────────────────────────────────────────────────
 # Q1: Which video categories receive the highest number of views?
 # ─────────────────────────────────────────────────────────────────
-print("\n\n🔍  Q1: Views by Category")
+print("\n\n Q1: Views by Category")
 
 cat_stats = (
     df.groupby("category")
@@ -119,7 +114,7 @@ fig.tight_layout(pad=2)
 
 # Insight box
 fig.text(0.02, -0.06,
-    "📌 Key Insight: Music videos lead in avg views per video (~4.9M), followed by Film & Animation. "
+    " Key Insight: Music videos lead in avg views per video (~4.9M), followed by Film & Animation. "
     "Entertainment dominates total views due to higher video count.",
     fontsize=10, color="#444444", style="italic",
     bbox=dict(boxstyle="round,pad=0.4", fc="#EEF4FB", ec=TEAL, lw=1))
@@ -129,10 +124,9 @@ save(fig, "Q1_views_by_category.png")
 print(cat_stats[["category","avg_views_M","total_views_M","video_count"]].to_string(index=False))
 
 
-# ─────────────────────────────────────────────────────────────────
 # Q2: Best time to upload for maximum engagement
 # ─────────────────────────────────────────────────────────────────
-print("\n\n🔍  Q2: Best Upload Time")
+print("\n\n Q2: Best Upload Time")
 
 hour_stats = (
     df.groupby("publish_hour")
@@ -179,7 +173,7 @@ axes[1].tick_params(axis="x", labelsize=8)
 
 fig.tight_layout(pad=2.5)
 fig.text(0.02, -0.05,
-    "📌 Key Insight: Videos uploaded between 2pm–4pm on Fridays & Saturdays show the highest average engagement. "
+    "Key Insight: Videos uploaded between 2pm–4pm on Fridays & Saturdays show the highest average engagement. "
     "Early morning uploads (midnight–6am) consistently underperform.",
     fontsize=10, color="#444444", style="italic",
     bbox=dict(boxstyle="round,pad=0.4", fc="#EEF4FB", ec=TEAL, lw=1))
@@ -190,7 +184,7 @@ save(fig, "Q2_best_upload_time.png")
 # ─────────────────────────────────────────────────────────────────
 # Q3: How do likes and comments relate to views?
 # ─────────────────────────────────────────────────────────────────
-print("\n\n🔍  Q3: Likes & Comments vs Views")
+print("\n\n  Q3: Likes & Comments vs Views")
 
 sample = df.sample(600, random_state=1)
 cat_color_map = {cat: PALETTE[i % len(PALETTE)] for i, cat in enumerate(df["category"].unique())}
@@ -241,7 +235,7 @@ fig.legend(handles=handles, loc="lower center", ncol=5, fontsize=8,
 
 fig.tight_layout(pad=2)
 fig.text(0.02, -0.18,
-    "📌 Key Insight: Views strongly predict likes (r≈0.94) and moderately predict comments (r≈0.75). "
+    " Key Insight: Views strongly predict likes (r≈0.94) and moderately predict comments (r≈0.75). "
     "Comedy & Music show above-median engagement scores, meaning smaller audiences engage proportionally more.",
     fontsize=10, color="#444444", style="italic",
     bbox=dict(boxstyle="round,pad=0.4", fc="#EEF4FB", ec=TEAL, lw=1))
@@ -252,7 +246,7 @@ save(fig, "Q3_likes_comments_vs_views.png")
 # ─────────────────────────────────────────────────────────────────
 # Q4: Which channels dominate trending videos?
 # ─────────────────────────────────────────────────────────────────
-print("\n\n🔍  Q4: Top Trending Channels")
+print("\n\n  Q4: Top Trending Channels")
 
 ch_stats = (
     df.groupby(["channel_title","category"])
@@ -311,7 +305,7 @@ fig.legend(handles=handles2, loc="lower center", ncol=5, fontsize=8,
 
 fig.tight_layout(pad=2)
 fig.text(0.02, -0.17,
-    "📌 Key Insight: MrBeast & ESPN dominate by trending count. Music channels (Taylor Swift, Bad Bunny) "
+    "Key Insight: MrBeast & ESPN dominate by trending count. Music channels (Taylor Swift, Bad Bunny) "
     "lead average views per video — showing fewer but highly viral uploads. High engagement channels "
     "appear top-right in the bubble chart.",
     fontsize=10, color="#444444", style="italic",
@@ -390,7 +384,7 @@ axes[1,1].set_visible(False)
 
 fig.tight_layout(pad=2.5)
 fig.text(0.02, -0.05,
-    "📌 Key Insight: Friday and Saturday produce the most trending videos AND the highest average engagement. "
+    " Key Insight: Friday and Saturday produce the most trending videos AND the highest average engagement. "
     "Wednesday is the weakest day for uploads. The weekend advantage is consistent across categories.",
     fontsize=10, color="#444444", style="italic",
     bbox=dict(boxstyle="round,pad=0.4", fc="#EEF4FB", ec=TEAL, lw=1))
@@ -401,7 +395,7 @@ save(fig, "Q5_day_of_week_analysis.png")
 # ─────────────────────────────────────────────────────────────────
 # BONUS: Summary Dashboard
 # ─────────────────────────────────────────────────────────────────
-print("\n\n📊  Generating Summary Dashboard …")
+print("\n\n Generating Summary Dashboard …")
 
 fig = plt.figure(figsize=(16, 10))
 fig.patch.set_facecolor("white")
@@ -471,7 +465,7 @@ ax_trend.spines["right"].set_visible(False)
 
 save(fig, "Q0_executive_dashboard.png")
 
-print("\n\n🎉  All visualizations saved to ./visualizations/")
+print("\n\n  All visualizations saved to ./visualizations/")
 print("    Files generated:")
 for f in sorted(os.listdir(VIZ)):
     size = os.path.getsize(os.path.join(VIZ, f)) // 1024
